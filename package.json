@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "files": [
-    "dist/mcp/"
+    "dist/mcp/",
+    "NOTICE"
   ],
   "repository": {
     "type": "git",
@@ -15,6 +16,7 @@
     "pare-mcp": "./dist/mcp/stdio.js"
   },
   "description": "Explainable, local-first AI context and token analysis.",
+  "author": "Ayush Raj",
   "license": "Apache-2.0",
   "type": "module",
   "scripts": {

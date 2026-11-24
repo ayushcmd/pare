@@ -6,7 +6,7 @@
 **Status:** Approved deployment direction and conditional launch checklist; **no deployment, publishing, verification, or platform approval is claimed to have occurred**  
 **Depends on:** Documents `01-product-overview.md` through `10-testing.md`  
 **Brand:** **PARE** — *Keep what matters. Cut the rest.*  
-**Ownership:** Personal GitHub repository (username not yet selected)  
+**Ownership:** Ayush Raj; personal GitHub repository `ayushcmd/pare`
 **License:** **Apache License, Version 2.0** (approved)
 
 > **Release principle:** Ship one small, inspectable service securely before publishing to directories. A repository listing, registry record, operational deployment, and ChatGPT public plugin approval are **four distinct events**. None automatically guarantees the next.
@@ -72,7 +72,7 @@ No implementation of the backend itself, no promise that a `workers.dev` hostnam
 
 ### 3.1 Personal account
 
-Official code location is **`https://github.com/<GITHUB_USERNAME>/<REPO>`**, where both are placeholders pending owner account and repository-name confirmation. Suggested repo **`pare-mcp`** is *not* asserted available. Do not imply that a GitHub repository named `pare` owns the global PARE trademark or package namespaces. Use the GitHub-based MCP Registry name `io.github.<GITHUB_USERNAME>/pare-mcp` **only if valid and available**. The actual GitHub username must be authenticated at publishing time.
+Official code location is **`https://github.com/ayushcmd/pare`**, owned by Ayush Raj. The npm package name `pare-mcp` is prepared but remains unpublished and unreserved. Do not imply that the GitHub repository owns the global PARE trademark or package namespaces. Use a GitHub-based MCP Registry name under `io.github.ayushcmd` only after validating its actual schema and availability at publishing time.
 
 ### 3.2 Recommended public repository layout
 
@@ -610,7 +610,7 @@ The owner has selected Apache-2.0 and personal GitHub ownership. These practical
 
 | ID | Decision needed | Why | Recommended default |
 |---|---|---|---|
-| D11-01 | Exact GitHub username and repository slug | Namespace, URLs and registry authentication | `pare-mcp` only if available; use actual account |
+| D11-01 | **Resolved:** `ayushcmd/pare`, owned by Ayush Raj | Namespace and URLs are known; registry authentication remains to be verified | Use actual account at publishing time |
 | D11-02 | PARE name clearance and logo distribution rights | Trademark and third-party rights | Preliminary searches, then relevant formal review before public branding |
 | D11-03 | Production hostname/custom domain | Stable endpoint, DNS and public directory verification | Staging on protected workers.dev; domain decision after name clearance |
 | D11-04 | Cloudflare Workers/Access plan and actual rate-control entitlement | Features/cost and abuse controls | Select smallest plan that meets tested controls |
@@ -618,7 +618,7 @@ The owner has selected Apache-2.0 and personal GitHub ownership. These practical
 | D11-06 | Access application ID, audience, identities, JWT verification library/config | Protected route correctness | Separate staging/production audiences, tested managed OAuth |
 | D11-07 | Cursor + MCP Inspector connection status | Beta eligibility | Block compatibility claim until passed |
 | D11-08 | Public invitation/onboarding strategy | Registry usefulness vs private beta | Remain invite-only until separately approved |
-| D11-09 | Individual publisher details and support/security contact | GitHub, privacy, OpenAI review | Owner provides true values only when ready |
+| D11-09 | **Partial:** owner is Ayush Raj; support/security contact and publisher verification remain | GitHub, privacy, OpenAI review | Verify contact and publisher identity before public service launch |
 | D11-10 | Privacy/Terms URLs and platform logging retention findings | Truthful public service disclosures | Audit real settings and publish accurate pages |
 | D11-11 | Square logo/icon export | Directory dimensions and crisp display | Export original logo with proper padding, do not redraw |
 | D11-12 | Final CI environment, deployment credentials, manual release approver | Least privilege and repeatable release | GitHub Actions CI, gated manual production deploy |
@@ -661,7 +661,7 @@ The owner has selected Apache-2.0 and personal GitHub ownership. These practical
 - [ ] ChatGPT submission made only with working reviewer-facing OAuth, valid brand/privacy URLs, verified identity and passing tool scan.
 - [ ] OpenAI approval/visibility only claimed after official confirmation.
 
-**Release authorization:** Maintainer: `TBD`; commit/release: `TBD`; staging evidence: `TBD`; final go/no-go: `TBD`. No checkboxes are pre-checked.
+**Release authorization:** Maintainer: Ayush Raj; commit/release: `TBD`; staging evidence: `TBD`; final go/no-go: `TBD`. No checkboxes are pre-checked.
 
 ---
 
