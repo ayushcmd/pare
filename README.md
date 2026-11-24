@@ -34,6 +34,21 @@ npm run check
 
 ## Connect an MCP client locally
 
+For a stdio MCP client, launch the published package with npm:
+
+```json
+{
+  "mcpServers": {
+    "pare": {
+      "command": "npx",
+      "args": ["-y", "pare-mcp@0.1.0"]
+    }
+  }
+}
+```
+
+On Windows, some clients require `npx.cmd` as the command. The client must support installing and running a local stdio MCP server.
+
 Build the stdio server, then configure a client that supports local MCP servers to launch the built JavaScript file with Node.js:
 
 ```bash
@@ -53,11 +68,11 @@ Example client configuration (replace the path with the absolute path on your co
 }
 ```
 
-MCP clients use different configuration shapes; adapt the `command` and `args` fields to your client. Ask the AI to call `analyze_context` with the exact text when you want suggestions, and set `includeDraft: true` when you want a reviewable prose draft. `compare_content` measures an original and a candidate you provide. PARE does not intercept other messages automatically. This repository is not yet an npm-published package or a hosted MCP service.
+MCP clients use different configuration shapes; adapt the `command` and `args` fields to your client. Ask the AI to call `analyze_context` with the exact text when you want suggestions, and set `includeDraft: true` when you want a reviewable prose draft. `compare_content` measures an original and a candidate you provide. PARE does not intercept other messages automatically. The npm package provides a local stdio server; there is no hosted MCP service yet.
 
 The optional `task` field changes guidance for recognized diagnostic, success/performance, JSON aggregate, and lookup tasks. It uses simple keyword rules; it does not determine what information is safe to delete. Repeated prose findings are restricted to plain text that passes the conservative prose classifier.
 
-The local npm tarball can be inspected with `npm pack --dry-run --json`, and `npm run test:package` installs it into a temporary directory and calls both MCP tools through the installed CLI. Its contents are limited to the CLI bundle, README, package metadata, `NOTICE`, and the root Apache-2.0 license. The public npm release is being prepared; verify the published version before installing with `npx -y pare-mcp@0.1.0`.
+The [public npm package](https://www.npmjs.com/package/pare-mcp) can be launched locally with `npx -y pare-mcp@0.1.0` in an MCP client that supports stdio. The tarball contains the CLI bundle, README, package metadata, `NOTICE`, and the root Apache-2.0 license. `npm run test:package` installs a local tarball into a temporary directory and calls both MCP tools through the installed CLI.
 
 Codex CLI `0.171.0-alpha.13` was tested with a local PARE tool call on Windows. See [client validation](https://github.com/ayushcmd/pare/blob/main/docs/client-validation.md) for the exact scope and setup command.
 
@@ -69,4 +84,4 @@ PARE detects structural patterns. A smaller input is not guaranteed to preserve 
 
 ## Status
 
-Initial implementation. Local stdio protocol calls are tested, and CI checks every PR. Draft [registry metadata](https://github.com/ayushcmd/pare/blob/main/docs/registry-readiness.md) is prepared. The public npm release is being prepared; production authentication, measured Worker limits, public deployment, and directory review remain release work.
+Initial implementation. Local stdio protocol calls are tested, and CI checks every PR. `pare-mcp@0.1.0` is published on npm, and `io.github.ayushcmd/pare@0.1.0` is active in the [official MCP Registry](https://registry.modelcontextprotocol.io/v0.1/servers/io.github.ayushcmd%2Fpare/versions/0.1.0). Production authentication, measured Worker limits, public deployment, GitHub catalog discovery, and OpenAI directory review remain release work.

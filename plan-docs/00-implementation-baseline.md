@@ -55,15 +55,15 @@ These versions are locked in `package-lock.json`. Upgrade through reviewed depen
 - Wrangler Worker dry-run bundles successfully.
 - Both declared and actual JSON request bytes are capped before Worker analysis.
 - Community guidance and reporting are maintained in root `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SUPPORT.md`, `SECURITY.md`, and `PRIVACY.md`.
-- Package-based official MCP Registry metadata is drafted in `server.json` under `io.github.ayushcmd/pare`; the official validation endpoint accepted it on 24 November 2026, and publication awaits a public npm release.
+- `pare-mcp@0.1.0` was published to npm, and package-based `server.json` metadata was published to the official MCP Registry under `io.github.ayushcmd/pare@0.1.0` on 24 November 2026. The public registry record reports active status. An independent MCP client launched the public npm package and called `analyze_context` successfully.
 
-This is local build evidence, not a deployed-service, registry-publication, authentication, browser-compatibility, or semantic-equivalence claim.
+This is local build and package-registry evidence, not a deployed-service, remote authentication, browser-compatibility, or semantic-equivalence claim.
 
 ## Remaining release work
 
 - MCP Inspector and additional named AI-client installation checks beyond the tested Codex CLI invocation.
 - Cross-browser/mobile QA and Web Worker performance evaluation for tokenization.
 - Test-derived production limits and Cloudflare authentication/rate controls.
-- npm package publication: the local npm session returned `ayushcmd` on 24 November 2026 and release configuration is prepared in a PR, but the package has not been published.
-- Registry validation and publication after the npm release, GitHub Actions OIDC publishing, stable domain, hosted privacy/support/terms URLs, and platform-specific installation verification.
+- Public npm installation verification in additional named clients and future GitHub Actions OIDC publishing.
+- Stable domain, hosted privacy/support/terms URLs, GitHub catalog discovery, and platform-specific directory verification.
 - Public hosted privacy wording still requires a deployment and platform logging audit.
