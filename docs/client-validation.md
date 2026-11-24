@@ -20,4 +20,4 @@ The commands above describe normal persistent setup; the validation used a tempo
 
 ## Publication gate
 
-The prospective public npm name is `pare-mcp`. A public registry lookup returned no published version on 24 November 2026, but this does not reserve the name. `npm whoami --registry=https://registry.npmjs.org` returned `ayushcmd` on 24 November 2026. The release PR removes the `private` guard; verify the final package contents and the published version before claiming npm availability.
+`pare-mcp@0.1.0` was published to npm on 24 November 2026 by `ayushcmd`. A public npm lookup confirmed the version, `pare-mcp` CLI entry, and `mcpName: io.github.ayushcmd/pare`. The installed-tarball MCP calls described above were performed before publication. After publication, an independent MCP client launched the public package through `npm exec` from outside the repository, discovered both tools, and called `analyze_context` successfully with synthetic text.
