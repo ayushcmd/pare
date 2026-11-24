@@ -2,7 +2,7 @@
 
 ## Supported versions
 
-PARE is in active development. The current `main` branch receives security fixes; no npm package or hosted production service has been released yet. Older commits are not maintained as separate supported versions.
+PARE is in active development. The current `main` branch receives security fixes, and `pare-mcp@1.0.0` is the current npm release. Version `0.1.0` is superseded and does not receive separate backports. No hosted production service has been released.
 
 ## Report a vulnerability privately
 

@@ -8,7 +8,7 @@ This file records user-visible changes and public package releases. A package re
 
 ## 1.0.0 — 24 November 2026
 
-- Prepare the first stable version of the local stdio package with the existing two-tool MCP contract and conservative draft rules.
+- Released the first stable version of the local stdio package with the existing two-tool MCP contract and conservative draft rules.
 - Version the package, MCP server handshake, and registry metadata together. No hosted MCP service is included.
 
 ## 0.1.0 — 24 November 2026

@@ -21,3 +21,5 @@ The commands above describe normal persistent setup; the validation used a tempo
 ## Publication gate
 
 `pare-mcp@0.1.0` was published to npm on 24 November 2026 by `ayushcmd`. A public npm lookup confirmed the version, `pare-mcp` CLI entry, and `mcpName: io.github.ayushcmd/pare`. The installed-tarball MCP calls described above were performed before publication. After publication, an independent MCP client launched the public package through `npm exec` from outside the repository, discovered both tools, and called `analyze_context` successfully with synthetic text.
+
+On 24 November 2026, the same public-package check passed for `pare-mcp@1.0.0`: both tools were discovered and `analyze_context` returned successfully. This verifies the published stdio package, not a hosted endpoint or installation in every AI client.

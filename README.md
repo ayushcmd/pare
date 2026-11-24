@@ -2,39 +2,15 @@
 
 **Keep what matters. Cut the rest.**
 
-PARE is a local-first, explainable AI context auditor. It counts supplied text with a documented tokenizer, detects structural waste, and can propose narrowly scoped prose deduplication that always requires review.
+PARE helps you inspect text before sending it to an AI assistant. It counts tokens, identifies structural repetition, and offers conservative cleanup suggestions that you review before use. It works with text you explicitly provide; it does not read other chats or intercept prompts.
 
-Maintained by Ayush Raj at [ayushcmd/pare](https://github.com/ayushcmd/pare).
+[npm package](https://www.npmjs.com/package/pare-mcp/v/1.0.0) · [MCP Registry](https://registry.modelcontextprotocol.io/v0.1/servers/io.github.ayushcmd%2Fpare/versions/1.0.0) · [GitHub release](https://github.com/ayushcmd/pare/releases/tag/v1.0.0)
 
-Community: [contributing](https://github.com/ayushcmd/pare/blob/main/CONTRIBUTING.md), [support](https://github.com/ayushcmd/pare/blob/main/SUPPORT.md), [security](https://github.com/ayushcmd/pare/blob/main/SECURITY.md), [privacy](https://github.com/ayushcmd/pare/blob/main/PRIVACY.md), and [code of conduct](https://github.com/ayushcmd/pare/blob/main/CODE_OF_CONDUCT.md).
+Maintained by Ayush Raj at [ayushcmd/pare](https://github.com/ayushcmd/pare). Licensed under [Apache-2.0](https://github.com/ayushcmd/pare/blob/main/LICENSE).
 
-## Current implementation
+## Use PARE with an MCP client
 
-- Framework-free browser analyzer; analysis stays in the browser by default.
-- Shared deterministic TypeScript core.
-- Cloudflare Worker JSON API and remote Streamable HTTP MCP endpoint.
-- Two read-only MCP tools: `analyze_context` and `compare_content`.
-- `o200k_base` token counting through `gpt-tokenizer`.
-- No database, accounts, saved analysis history, or external AI API.
-
-## Develop
-
-Requires Node.js 22 or newer.
-
-```bash
-npm install
-npm run dev
-```
-
-Run all local checks:
-
-```bash
-npm run check
-```
-
-## Connect an MCP client locally
-
-For a stdio MCP client, launch the published package with npm:
+Requires Node.js 22 or newer and an MCP client that can launch local stdio servers. Add PARE to the client's MCP configuration:
 
 ```json
 {
@@ -47,41 +23,44 @@ For a stdio MCP client, launch the published package with npm:
 }
 ```
 
-On Windows, some clients require `npx.cmd` as the command. The client must support installing and running a local stdio MCP server.
+Some Windows clients require `npx.cmd` in place of `npx`. Configuration formats vary by client. The [client validation notes](https://github.com/ayushcmd/pare/blob/main/docs/client-validation.md) include a tested Codex CLI setup.
 
-Build the stdio server, then configure a client that supports local MCP servers to launch the built JavaScript file with Node.js:
+Once connected, ask your assistant to use PARE on text you supply. For example: “Use `analyze_context` on the following context and show me the findings before changing anything.” Request `includeDraft: true` only when you want to inspect a cleaned prose draft.
+
+PARE exposes two read-only tools:
+
+| Tool              | Purpose                                                                                                                         |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `analyze_context` | Count supplied text and report structural findings; an optional draft removes only exact duplicate standalone prose paragraphs. |
+| `compare_content` | Count an original and a candidate with the same tokenizer and report the difference.                                            |
+
+The optional `task` input adjusts recommendations for recognized diagnostic, performance, JSON aggregate, and lookup tasks. It does not authorize deleting information. Both tools return a readable summary and structured results.
+
+## Run from source
+
+```bash
+npm ci
+npm run dev
+```
+
+The website runs analysis in the browser by default. It accepts pasted text and local `.txt`, `.md`, `.json`, `.js`, `.ts`, `.py`, and `.log` files; selected code is not executed. To build the local MCP server and run project checks:
 
 ```bash
 npm run build:mcp
+npm run check
+npm run test:package
 ```
 
-Example client configuration (replace the path with the absolute path on your computer):
+To launch a source build from an MCP client, use `node` as the command and the absolute path to `dist/mcp/stdio.js` as its argument. The repository also contains Cloudflare Worker routes for a JSON API and remote MCP transport, but no public hosted endpoint has been released.
 
-```json
-{
-  "mcpServers": {
-    "pare": {
-      "command": "node",
-      "args": ["C:/absolute/path/to/pare/dist/mcp/stdio.js"]
-    }
-  }
-}
-```
+## How to interpret results
 
-MCP clients use different configuration shapes; adapt the `command` and `args` fields to your client. Ask the AI to call `analyze_context` with the exact text when you want suggestions, and set `includeDraft: true` when you want a reviewable prose draft. `compare_content` measures an original and a candidate you provide. PARE does not intercept other messages automatically. The npm package provides a local stdio server; there is no hosted MCP service yet.
+PARE uses `gpt-tokenizer` with `o200k_base`. Counts describe that encoding, not a provider's bill or complete message framing. Findings are structural suggestions; a smaller input is not guaranteed to preserve meaning or improve answer quality. Inspect every proposed draft and comparison before sending revised text.
 
-The optional `task` field changes guidance for recognized diagnostic, success/performance, JSON aggregate, and lookup tasks. It uses simple keyword rules; it does not determine what information is safe to delete. Repeated prose findings are restricted to plain text that passes the conservative prose classifier.
+Local browser analysis and the stdio server do not intentionally save prompt history, use an application database, or send text to an external AI API. Your browser, MCP client, operating system, and package manager may handle data separately. See the [privacy policy](https://github.com/ayushcmd/pare/blob/main/PRIVACY.md).
 
-The [public npm package](https://www.npmjs.com/package/pare-mcp) can be launched locally with `npx -y pare-mcp@1.0.0` in an MCP client that supports stdio. The tarball contains the CLI bundle, README, package metadata, `NOTICE`, and the root Apache-2.0 license. `npm run test:package` installs a local tarball into a temporary directory and calls both MCP tools through the installed CLI.
+## Release and support
 
-Codex CLI `0.171.0-alpha.13` was tested with a local PARE tool call on Windows. See [client validation](https://github.com/ayushcmd/pare/blob/main/docs/client-validation.md) for the exact scope and setup command.
+`pare-mcp@1.0.0` is available on npm and active in the official MCP Registry. This does not imply a listing in GitHub's separate Copilot catalog or OpenAI's plugin directory. A hosted MCP service remains future work.
 
-The website supports `.txt`, `.md`, `.json`, `.js`, `.ts`, `.py`, and `.log` as text. Uploaded code is never executed.
-
-## Important limits
-
-PARE detects structural patterns. A smaller input is not guaranteed to preserve meaning, improve model quality, reduce latency, or lower a bill. Review every proposed draft before using it.
-
-## Status
-
-The local stdio package is versioned for a `1.0.0` release. The currently published `0.1.0` package remains available on npm and in the [official MCP Registry](https://registry.modelcontextprotocol.io/v0.1/servers/io.github.ayushcmd%2Fpare/versions/0.1.0) until `1.0.0` is published. Production authentication, measured Worker limits, public deployment, GitHub catalog discovery, and OpenAI directory review remain separate work.
+For help or changes, see [support](https://github.com/ayushcmd/pare/blob/main/SUPPORT.md), [contributing](https://github.com/ayushcmd/pare/blob/main/CONTRIBUTING.md), and the [code of conduct](https://github.com/ayushcmd/pare/blob/main/CODE_OF_CONDUCT.md). Report vulnerabilities through the [security policy](https://github.com/ayushcmd/pare/blob/main/SECURITY.md).
