@@ -6,6 +6,8 @@ PARE is a local-first, explainable AI context auditor. It counts supplied text w
 
 Maintained by Ayush Raj at [ayushcmd/pare](https://github.com/ayushcmd/pare).
 
+Community: [contributing](https://github.com/ayushcmd/pare/blob/main/CONTRIBUTING.md), [support](https://github.com/ayushcmd/pare/blob/main/SUPPORT.md), [security](https://github.com/ayushcmd/pare/blob/main/SECURITY.md), [privacy](https://github.com/ayushcmd/pare/blob/main/PRIVACY.md), and [code of conduct](https://github.com/ayushcmd/pare/blob/main/CODE_OF_CONDUCT.md).
+
 ## Current implementation
 
 - Framework-free browser analyzer; analysis stays in the browser by default.
