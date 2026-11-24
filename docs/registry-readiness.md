@@ -16,6 +16,6 @@ For a remote listing, deploy a stable public HTTPS MCP endpoint with production 
 
 For a local desktop listing, confirm partner allowlisting and package a desktop-only plugin. A working local stdio server alone is insufficient.
 
-The npm package remains `private: true`. The package name `pare-mcp` was not found in the public npm registry during a lookup, but that does not reserve it. The local npm session returned 401, so ownership and publication cannot be verified yet. The Cloudflare Worker has only passed a dry-run; no remote URL should be advertised in `server.json`.
+The release PR removes the npm package's `private` guard and pins public npm as the publish registry. The package name `pare-mcp` was not found in the public npm registry during a lookup on 24 November 2026, but that does not reserve it. The local npm session returned `ayushcmd`; the package is not published yet. The Cloudflare Worker has only passed a dry-run; no remote URL should be advertised in `server.json`.
 
 `server.json` is a package-based draft for the current local distribution. On 24 November 2026, `POST https://registry.modelcontextprotocol.io/v0.1/validate` returned `{"valid":true,"issues":[]}`. Before publication, confirm package version and `mcpName` marker, owner authentication, and the actual published package. Do not add a remote entry until the endpoint is deployed and tested. OpenAI submission is separate from MCP Registry publication.

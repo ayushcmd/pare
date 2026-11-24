@@ -2,7 +2,10 @@
   "name": "pare-mcp",
   "mcpName": "io.github.ayushcmd/pare",
   "version": "0.1.0",
-  "private": true,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "files": [
     "dist/mcp/",
     "NOTICE"

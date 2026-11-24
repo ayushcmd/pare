@@ -64,6 +64,6 @@ This is local build evidence, not a deployed-service, registry-publication, auth
 - MCP Inspector and additional named AI-client installation checks beyond the tested Codex CLI invocation.
 - Cross-browser/mobile QA and Web Worker performance evaluation for tokenization.
 - Test-derived production limits and Cloudflare authentication/rate controls.
-- npm account/package ownership verification and publish configuration; public npm authentication is currently unavailable.
+- npm package publication: the local npm session returned `ayushcmd` on 24 November 2026 and release configuration is prepared in a PR, but the package has not been published.
 - Registry validation and publication after the npm release, GitHub Actions OIDC publishing, stable domain, hosted privacy/support/terms URLs, and platform-specific installation verification.
 - Public hosted privacy wording still requires a deployment and platform logging audit.

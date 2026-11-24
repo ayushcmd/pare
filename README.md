@@ -57,7 +57,7 @@ MCP clients use different configuration shapes; adapt the `command` and `args` f
 
 The optional `task` field changes guidance for recognized diagnostic, success/performance, JSON aggregate, and lookup tasks. It uses simple keyword rules; it does not determine what information is safe to delete. Repeated prose findings are restricted to plain text that passes the conservative prose classifier.
 
-The local npm tarball can be inspected with `npm pack --dry-run --json`, and `npm run test:package` installs it into a temporary directory and calls both MCP tools through the installed CLI. Its contents are limited to the CLI bundle, README, package metadata, `NOTICE`, and the root Apache-2.0 license. Publishing remains disabled until npm account ownership and release checks are complete.
+The local npm tarball can be inspected with `npm pack --dry-run --json`, and `npm run test:package` installs it into a temporary directory and calls both MCP tools through the installed CLI. Its contents are limited to the CLI bundle, README, package metadata, `NOTICE`, and the root Apache-2.0 license. The public npm release is being prepared; verify the published version before installing with `npx -y pare-mcp@0.1.0`.
 
 Codex CLI `0.171.0-alpha.13` was tested with a local PARE tool call on Windows. See [client validation](https://github.com/ayushcmd/pare/blob/main/docs/client-validation.md) for the exact scope and setup command.
 
@@ -69,4 +69,4 @@ PARE detects structural patterns. A smaller input is not guaranteed to preserve 
 
 ## Status
 
-Initial implementation. Local stdio protocol calls are tested, and CI checks every PR. Draft [registry metadata](https://github.com/ayushcmd/pare/blob/main/docs/registry-readiness.md) is prepared. npm publishing, production authentication, measured Worker limits, public deployment, and directory review remain release work.
+Initial implementation. Local stdio protocol calls are tested, and CI checks every PR. Draft [registry metadata](https://github.com/ayushcmd/pare/blob/main/docs/registry-readiness.md) is prepared. The public npm release is being prepared; production authentication, measured Worker limits, public deployment, and directory review remain release work.

@@ -20,4 +20,4 @@ The commands above describe normal persistent setup; the validation used a tempo
 
 ## Publication gate
 
-The prospective public npm name is `pare-mcp`. A public registry lookup returned no published version on 24 November 2026, but this does not reserve the name. `npm whoami --registry=https://registry.npmjs.org` returned 401, so npm account ownership and publishing are unverified. Keep `private: true` until Ayush Raj signs into an npm account that can publish this name, the final package contents are reviewed, and a release is explicitly approved.
+The prospective public npm name is `pare-mcp`. A public registry lookup returned no published version on 24 November 2026, but this does not reserve the name. `npm whoami --registry=https://registry.npmjs.org` returned `ayushcmd` on 24 November 2026. The release PR removes the `private` guard; verify the final package contents and the published version before claiming npm availability.

@@ -4,6 +4,7 @@ This file records user-visible changes after the first public source commit. Ver
 
 ## Unreleased
 
+- Prepared public npm package configuration and verified the `ayushcmd` publishing session; no npm release is claimed yet.
 - Added task-guided recommendations for common log and JSON tasks while preserving the conservative draft rule.
 - Verified local stdio MCP calls through the official client transport, an installed npm tarball, and Codex CLI.
 - Added owner metadata, package preparation, and pull request CI.
