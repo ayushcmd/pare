@@ -27,6 +27,7 @@
     "build": "npm run build:web && npm run build:mcp && npm run build:worker",
     "typecheck": "tsc --noEmit",
     "test": "npm run build:mcp && vitest run",
+    "test:package": "node scripts/smoke-package.mjs",
     "test:watch": "vitest",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
