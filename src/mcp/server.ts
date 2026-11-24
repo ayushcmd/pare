@@ -19,7 +19,7 @@ export function createPareMcpServer(): McpServer {
     {
       title: "Analyze AI context",
       description:
-        "Use this before sending substantial text to an AI model. Finds structural token waste and can propose only conservative, review-required prose deduplication.",
+        "When the user asks to trim or inspect a substantial prompt, call this with the exact text. Report each finding and its line numbers. Set includeDraft only when a reviewable cleaned draft is wanted; never silently replace the user's text.",
       inputSchema: AnalyzeInputSchema,
       outputSchema: AnalysisResultSchema,
       annotations: {
@@ -73,9 +73,32 @@ export function createPareMcpServer(): McpServer {
 function summarizeAnalysis(
   result: z.infer<typeof AnalysisResultSchema>,
 ): string {
-  const findingText = `${result.findings.length} structural ${result.findings.length === 1 ? "finding" : "findings"}`;
-  if (result.draft) {
-    return `${findingText}. A review-required draft saves ${result.draft.savedTokens} tokens (${result.draft.reductionPercent.toFixed(1)}%) with the selected encoding.`;
+  const lines = [
+    `${result.original.tokens} tokens in ${result.tokenization.encoding}; ${result.findings.length} structural ${result.findings.length === 1 ? "finding" : "findings"}.`,
+  ];
+  for (const finding of result.findings) {
+    const locations = finding.evidence
+      .map(({ startLine, endLine }) =>
+        startLine === endLine
+          ? `line ${startLine + 1}`
+          : `lines ${startLine + 1}-${endLine + 1}`,
+      )
+      .join(", ");
+    lines.push(`- ${finding.title} (${locations}): ${finding.recommendation}`);
   }
-  return `${findingText}. No measured draft reduction is available.`;
+  if (result.draft) {
+    lines.push(
+      `Review-required draft: ${result.draft.savedTokens} fewer tokens (${result.draft.reductionPercent.toFixed(1)}%). Inspect the complete draft in structuredContent before using it.`,
+    );
+  } else if (result.draftStatus === "not_requested") {
+    lines.push(
+      "No draft requested. Call again with includeDraft: true to check for a safe prose-only draft.",
+    );
+  } else {
+    lines.push(
+      "No safe automatic draft is available; use the findings as manual suggestions.",
+    );
+  }
+  lines.push("Review meaning before sending any revised context.");
+  return lines.join("\n");
 }
