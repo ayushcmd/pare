@@ -51,6 +51,7 @@ These versions are locked in `package-lock.json`. Upgrade through reviewed depen
 - The primary website flow was exercised in Brave: local analysis, duplicate detection, measured draft savings, and the disabled-until-reviewed copy control all behaved as designed.
 - Local stdio MCP bundle builds and answers both tools through the official client transport.
 - A minimal `pare-mcp` npm tarball is built, installed into an isolated temporary directory, and verified with MCP tool discovery and both calls; GitHub CI checks pull requests.
+- Codex CLI `0.171.0-alpha.13` called the local `analyze_context` tool in an ephemeral test on Windows; the result and limits are recorded in `docs/client-validation.md`.
 - Wrangler Worker dry-run bundles successfully.
 - Both declared and actual JSON request bytes are capped before Worker analysis.
 
@@ -58,8 +59,8 @@ This is local build evidence, not a deployed-service, registry-publication, auth
 
 ## Remaining release work
 
-- MCP Inspector and named AI-client installation checks beyond the automated stdio client test.
+- MCP Inspector and additional named AI-client installation checks beyond the tested Codex CLI invocation.
 - Cross-browser/mobile QA and Web Worker performance evaluation for tokenization.
 - Test-derived production limits and Cloudflare authentication/rate controls.
-- npm account/package ownership verification, named AI-client installation, and publish configuration.
+- npm account/package ownership verification and publish configuration; public npm authentication is currently unavailable.
 - `server.json`, registry validation, GitHub Actions OIDC publishing, stable domain, privacy/security URLs, and platform-specific installation verification.

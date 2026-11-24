@@ -4,6 +4,8 @@
 
 PARE is a local-first, explainable AI context auditor. It counts supplied text with a documented tokenizer, detects structural waste, and can propose narrowly scoped prose deduplication that always requires review.
 
+Maintained by Ayush Raj at [ayushcmd/pare](https://github.com/ayushcmd/pare).
+
 ## Current implementation
 
 - Framework-free browser analyzer; analysis stays in the browser by default.
@@ -53,7 +55,9 @@ MCP clients use different configuration shapes; adapt the `command` and `args` f
 
 The optional `task` field changes guidance for recognized diagnostic, success/performance, JSON aggregate, and lookup tasks. It uses simple keyword rules; it does not determine what information is safe to delete. Repeated prose findings are restricted to plain text that passes the conservative prose classifier.
 
-The local npm tarball can be inspected with `npm pack --dry-run --json`, and `npm run test:package` installs it into a temporary directory and calls both MCP tools through the installed CLI. Its contents are limited to the CLI bundle, README, package metadata, and the root Apache-2.0 license. Publishing remains disabled until package ownership, named AI-client installation, and release checks are complete.
+The local npm tarball can be inspected with `npm pack --dry-run --json`, and `npm run test:package` installs it into a temporary directory and calls both MCP tools through the installed CLI. Its contents are limited to the CLI bundle, README, package metadata, `NOTICE`, and the root Apache-2.0 license. Publishing remains disabled until npm account ownership and release checks are complete.
+
+Codex CLI `0.171.0-alpha.13` was tested with a local PARE tool call on Windows. See [client validation](https://github.com/ayushcmd/pare/blob/main/docs/client-validation.md) for the exact scope and setup command.
 
 The website supports `.txt`, `.md`, `.json`, `.js`, `.ts`, `.py`, and `.log` as text. Uploaded code is never executed.
 
