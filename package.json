@@ -1,0 +1,42 @@
+{
+  "name": "pare",
+  "version": "0.1.0",
+  "private": true,
+  "bin": {
+    "pare-mcp": "./dist/mcp/stdio.js"
+  },
+  "description": "Explainable, local-first AI context and token analysis.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:worker": "wrangler dev",
+    "build:web": "vite build",
+    "build:worker": "wrangler deploy --dry-run",
+    "build:mcp": "esbuild src/mcp/stdio.ts --bundle --platform=node --format=esm --target=node22 --outfile=dist/mcp/stdio.js --banner:js=\"#!/usr/bin/env node\"",
+    "build": "npm run build:web && npm run build:mcp && npm run build:worker",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "check": "npm run typecheck && npm test && npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "2.4.0",
+    "gpt-tokenizer": "4.1.2",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.6.8",
+    "@types/node": "24.19.2",
+    "esbuild": "0.28.2",
+    "typescript": "7.0.2",
+    "vite": "8.3.8",
+    "vitest": "5.1.1",
+    "wrangler": "4.166.0"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

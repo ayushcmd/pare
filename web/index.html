@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="PARE finds structural waste in AI context and proposes conservative, reviewable reductions."
+    />
+    <title>PARE — Keep what matters. Cut the rest.</title>
+    <link rel="icon" href="/assets/pare-logo-original.png" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="PARE home">
+        <img src="/assets/pare-logo-original.png" alt="" width="42" height="42" />
+        <span>PARE</span>
+      </a>
+      <nav aria-label="Primary">
+        <a href="#analyzer">Analyzer</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#mcp">MCP</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <p class="eyebrow">AI context, with less noise</p>
+        <h1 id="hero-title">Keep what matters.<br /><span>Cut the rest.</span></h1>
+        <p class="hero-copy">
+          Inspect prompts, logs, JSON, code, and MCP metadata before you send them to an AI model.
+          PARE explains structural waste and measures only changes it actually makes.
+        </p>
+        <div class="trust-row">
+          <span>Local-first</span><span>No AI API</span><span>No saved history</span><span>Review required</span>
+        </div>
+      </section>
+
+      <section class="analyzer-shell" id="analyzer" aria-labelledby="analyzer-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Analyze locally</p>
+            <h2 id="analyzer-title">See what your context is carrying.</h2>
+          </div>
+          <p>Your text stays in this browser in the default website flow.</p>
+        </div>
+
+        <form id="analyze-form" class="analyzer-grid">
+          <div class="input-panel">
+            <div class="field-heading">
+              <label for="source-text">Context</label>
+              <span id="input-stats">0 characters</span>
+            </div>
+            <textarea
+              id="source-text"
+              name="text"
+              required
+              placeholder="Paste a prompt, document section, log, JSON response, or code excerpt…"
+            ></textarea>
+
+            <div class="input-actions">
+              <label class="file-button" for="file-input">Choose text file</label>
+              <input
+                id="file-input"
+                type="file"
+                accept=".txt,.md,.json,.js,.ts,.py,.log"
+              />
+              <select id="source-kind" aria-label="Content type">
+                <option value="plain_text">Plain text</option>
+                <option value="markdown">Markdown</option>
+                <option value="json">JSON</option>
+                <option value="javascript">JavaScript</option>
+                <option value="typescript">TypeScript</option>
+                <option value="python">Python</option>
+                <option value="log">Log</option>
+                <option value="mcp_tool_schema">MCP metadata</option>
+              </select>
+            </div>
+
+            <details>
+              <summary>Add task context <span class="optional-label">Optional</span></summary>
+              <label class="task-label" for="task-text">What are you trying to do with this context?</label>
+              <input id="task-text" maxlength="2000" placeholder="For example: debug a failed login" />
+            </details>
+
+            <button class="primary-button" type="submit">Analyze context</button>
+            <p class="form-note">PARE suggests. You decide. Never paste passwords, API keys, or secrets.</p>
+          </div>
+
+          <section class="results-panel" id="results" aria-live="polite" aria-label="Analysis results">
+            <div class="empty-state" id="empty-state">
+              <div class="empty-mark" aria-hidden="true">P</div>
+              <h3>Your report will appear here.</h3>
+              <p>Paste context and run the analyzer to see token counts, findings, and safe draft options.</p>
+            </div>
+          </section>
+        </form>
+      </section>
+
+      <section class="explainer" id="how-it-works" aria-labelledby="how-title">
+        <div>
+          <p class="eyebrow">Transparent by design</p>
+          <h2 id="how-title">An auditor, not an automatic rewriter.</h2>
+        </div>
+        <div class="feature-grid">
+          <article><span>01</span><h3>Measure</h3><p>Count the exact input with one documented encoding.</p></article>
+          <article><span>02</span><h3>Explain</h3><p>Identify structural patterns and show where they occur.</p></article>
+          <article><span>03</span><h3>Review</h3><p>Only conservative prose deduplication can create a draft.</p></article>
+        </div>
+      </section>
+
+      <section class="mcp-section" id="mcp" aria-labelledby="mcp-title">
+        <div>
+          <p class="eyebrow">For agents and developers</p>
+          <h2 id="mcp-title">The same analysis, through MCP.</h2>
+          <p>Use PARE remotely over Streamable HTTP or locally through the npm stdio package.</p>
+        </div>
+        <pre><code>npx -y @pare/mcp</code></pre>
+      </section>
+    </main>
+
+    <footer>
+      <a class="brand" href="#top"><span>PARE</span></a>
+      <p>Structural guidance, not a guarantee of equivalent meaning or lower cost.</p>
+    </footer>
+
+    <script type="module" src="/main.ts"></script>
+  </body>
+</html>
