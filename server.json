@@ -1,0 +1,21 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.ayushcmd/pare",
+  "title": "PARE",
+  "description": "Inspect AI context for token waste and review conservative cleanup suggestions.",
+  "repository": {
+    "url": "https://github.com/ayushcmd/pare",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "pare-mcp",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}

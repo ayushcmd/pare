@@ -1,5 +1,6 @@
 {
   "name": "pare-mcp",
+  "mcpName": "io.github.ayushcmd/pare",
   "version": "0.1.0",
   "private": true,
   "files": [
