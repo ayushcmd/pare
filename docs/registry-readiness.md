@@ -6,6 +6,8 @@
 
 `pare-mcp@0.1.0` is public on npm. The official publisher validated `server.json` and published `io.github.ayushcmd/pare@0.1.0` using the `ayushcmd` GitHub namespace. The [public registry record](https://registry.modelcontextprotocol.io/v0.1/servers/io.github.ayushcmd%2Fpare/versions/0.1.0) reports `status: active` and `isLatest: true`.
 
+The `1.0.0` release branch versions the package and `server.json` together. Publish the merged package to npm before registering the matching `1.0.0` metadata; verify both public records afterward.
+
 ## GitHub MCP catalog for Copilot
 
 No PARE listing has been verified in GitHub's separate catalog. Check discovery separately. Manual MCP configuration can be tested independently.

@@ -56,6 +56,7 @@ These versions are locked in `package-lock.json`. Upgrade through reviewed depen
 - Both declared and actual JSON request bytes are capped before Worker analysis.
 - Community guidance and reporting are maintained in root `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SUPPORT.md`, `SECURITY.md`, and `PRIVACY.md`.
 - `pare-mcp@0.1.0` was published to npm, and package-based `server.json` metadata was published to the official MCP Registry under `io.github.ayushcmd/pare@0.1.0` on 24 November 2026. The public registry record reports active status. An independent MCP client launched the public npm package and called `analyze_context` successfully.
+- The `1.0.0` release branch updates package, MCP handshake, and registry metadata versions together. npm, GitHub, and MCP Registry `1.0.0` publication is pending the merged release revision.
 
 This is local build and package-registry evidence, not a deployed-service, remote authentication, browser-compatibility, or semantic-equivalence claim.
 
