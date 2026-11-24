@@ -51,6 +51,8 @@ Example client configuration (replace the path with the absolute path on your co
 
 MCP clients use different configuration shapes; adapt the `command` and `args` fields to your client. Ask the AI to call `analyze_context` with the exact text when you want suggestions, and set `includeDraft: true` when you want a reviewable prose draft. `compare_content` measures an original and a candidate you provide. PARE does not intercept other messages automatically. This repository is not yet an npm-published package or a hosted MCP service.
 
+The optional `task` field changes guidance for recognized diagnostic, success/performance, JSON aggregate, and lookup tasks. It uses simple keyword rules; it does not determine what information is safe to delete. Repeated prose findings are restricted to plain text that passes the conservative prose classifier.
+
 The local npm tarball can be inspected with `npm pack --dry-run --json`, and `npm run test:package` installs it into a temporary directory and calls both MCP tools through the installed CLI. Its contents are limited to the CLI bundle, README, package metadata, and the root Apache-2.0 license. Publishing remains disabled until package ownership, named AI-client installation, and release checks are complete.
 
 The website supports `.txt`, `.md`, `.json`, `.js`, `.ts`, `.py`, and `.log` as text. Uploaded code is never executed.
