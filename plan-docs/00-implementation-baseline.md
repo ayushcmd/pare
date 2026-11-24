@@ -45,10 +45,10 @@ These versions are locked in `package-lock.json`. Upgrade through reviewed depen
 ## Initial measured build status
 
 - Strict TypeScript passes.
-- Nine initial core tests pass.
+- Nine core tests and one real stdio MCP client contract test pass.
 - Vite production build passes; the initial page script is small and the tokenizer/analyzer loads on first analysis.
 - The primary website flow was exercised in Brave: local analysis, duplicate detection, measured draft savings, and the disabled-until-reviewed copy control all behaved as designed.
-- Local stdio MCP bundle builds.
+- Local stdio MCP bundle builds and answers both tools through the official client transport.
 - Wrangler Worker dry-run bundles successfully.
 - Both declared and actual JSON request bytes are capped before Worker analysis.
 
@@ -56,7 +56,7 @@ This is local build evidence, not a deployed-service, registry-publication, auth
 
 ## Remaining release work
 
-- MCP protocol contract tests using Inspector and a real client.
+- MCP Inspector and named AI-client installation checks beyond the automated stdio client test.
 - Cross-browser/mobile QA and Web Worker performance evaluation for tokenization.
 - Test-derived production limits and Cloudflare authentication/rate controls.
 - npm package naming/ownership verification and publish configuration.

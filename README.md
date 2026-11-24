@@ -28,6 +28,29 @@ Run all local checks:
 npm run check
 ```
 
+## Connect an MCP client locally
+
+Build the stdio server, then configure a client that supports local MCP servers to launch the built JavaScript file with Node.js:
+
+```bash
+npm run build:mcp
+```
+
+Example client configuration (replace the path with the absolute path on your computer):
+
+```json
+{
+  "mcpServers": {
+    "pare": {
+      "command": "node",
+      "args": ["C:/absolute/path/to/pare/dist/mcp/stdio.js"]
+    }
+  }
+}
+```
+
+MCP clients use different configuration shapes; adapt the `command` and `args` fields to your client. Ask the AI to call `analyze_context` with the exact text when you want suggestions, and set `includeDraft: true` when you want a reviewable prose draft. `compare_content` measures an original and a candidate you provide. PARE does not intercept other messages automatically. This repository is not yet an npm-published package or a hosted MCP service.
+
 The website supports `.txt`, `.md`, `.json`, `.js`, `.ts`, `.py`, and `.log` as text. Uploaded code is never executed.
 
 ## Important limits
@@ -36,4 +59,4 @@ PARE detects structural patterns. A smaller input is not guaranteed to preserve 
 
 ## Status
 
-Initial implementation. Registry metadata, local npm packaging, production authentication, measured Worker limits, and public deployment remain release work.
+Initial implementation. Local stdio protocol calls are tested. Registry metadata, npm publishing, production authentication, measured Worker limits, and public deployment remain release work.
