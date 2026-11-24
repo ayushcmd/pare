@@ -54,6 +54,7 @@ These versions are locked in `package-lock.json`. Upgrade through reviewed depen
 - Codex CLI `0.171.0-alpha.13` called the local `analyze_context` tool in an ephemeral test on Windows; the result and limits are recorded in `docs/client-validation.md`.
 - Wrangler Worker dry-run bundles successfully.
 - Both declared and actual JSON request bytes are capped before Worker analysis.
+- Community guidance and reporting are maintained in root `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SUPPORT.md`, `SECURITY.md`, and `PRIVACY.md`.
 
 This is local build evidence, not a deployed-service, registry-publication, authentication, browser-compatibility, or semantic-equivalence claim.
 
@@ -64,3 +65,4 @@ This is local build evidence, not a deployed-service, registry-publication, auth
 - Test-derived production limits and Cloudflare authentication/rate controls.
 - npm account/package ownership verification and publish configuration; public npm authentication is currently unavailable.
 - `server.json`, registry validation, GitHub Actions OIDC publishing, stable domain, privacy/security URLs, and platform-specific installation verification.
+- Public hosted privacy wording still requires a deployment and platform logging audit.

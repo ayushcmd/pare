@@ -618,7 +618,7 @@ The owner has selected Apache-2.0 and personal GitHub ownership. These practical
 | D11-06 | Access application ID, audience, identities, JWT verification library/config | Protected route correctness | Separate staging/production audiences, tested managed OAuth |
 | D11-07 | Cursor + MCP Inspector connection status | Beta eligibility | Block compatibility claim until passed |
 | D11-08 | Public invitation/onboarding strategy | Registry usefulness vs private beta | Remain invite-only until separately approved |
-| D11-09 | **Partial:** owner is Ayush Raj; support/security contact and publisher verification remain | GitHub, privacy, OpenAI review | Verify contact and publisher identity before public service launch |
+| D11-09 | **Partial:** owner is Ayush Raj and security contact is the provided IITP email; publisher verification remains | GitHub, privacy, OpenAI review | Verify publisher identity before public service launch |
 | D11-10 | Privacy/Terms URLs and platform logging retention findings | Truthful public service disclosures | Audit real settings and publish accurate pages |
 | D11-11 | Square logo/icon export | Directory dimensions and crisp display | Export original logo with proper padding, do not redraw |
 | D11-12 | Final CI environment, deployment credentials, manual release approver | Least privilege and repeatable release | GitHub Actions CI, gated manual production deploy |
