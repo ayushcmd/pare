@@ -69,4 +69,4 @@ PARE detects structural patterns. A smaller input is not guaranteed to preserve 
 
 ## Status
 
-Initial implementation. Local stdio protocol calls are tested, and CI checks every PR. Registry metadata, npm publishing, production authentication, measured Worker limits, and public deployment remain release work.
+Initial implementation. Local stdio protocol calls are tested, and CI checks every PR. Draft [registry metadata](https://github.com/ayushcmd/pare/blob/main/docs/registry-readiness.md) is prepared. npm publishing, production authentication, measured Worker limits, public deployment, and directory review remain release work.
