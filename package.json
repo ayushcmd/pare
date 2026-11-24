@@ -1,7 +1,16 @@
 {
-  "name": "pare",
+  "name": "pare-mcp",
   "version": "0.1.0",
   "private": true,
+  "files": [
+    "dist/mcp/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayushcmd/pare.git"
+  },
+  "homepage": "https://github.com/ayushcmd/pare#readme",
+  "bugs": "https://github.com/ayushcmd/pare/issues",
   "bin": {
     "pare-mcp": "./dist/mcp/stdio.js"
   },
@@ -14,6 +23,7 @@
     "build:web": "vite build",
     "build:worker": "wrangler deploy --dry-run",
     "build:mcp": "esbuild src/mcp/stdio.ts --bundle --platform=node --format=esm --target=node22 --outfile=dist/mcp/stdio.js",
+    "prepack": "npm run build:mcp",
     "build": "npm run build:web && npm run build:mcp && npm run build:worker",
     "typecheck": "tsc --noEmit",
     "test": "npm run build:mcp && vitest run",
