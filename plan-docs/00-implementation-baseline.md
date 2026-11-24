@@ -49,6 +49,7 @@ These versions are locked in `package-lock.json`. Upgrade through reviewed depen
 - Vite production build passes; the initial page script is small and the tokenizer/analyzer loads on first analysis.
 - The primary website flow was exercised in Brave: local analysis, duplicate detection, measured draft savings, and the disabled-until-reviewed copy control all behaved as designed.
 - Local stdio MCP bundle builds and answers both tools through the official client transport.
+- A minimal `pare-mcp` npm tarball is built and inspected without publishing; GitHub CI checks pull requests.
 - Wrangler Worker dry-run bundles successfully.
 - Both declared and actual JSON request bytes are capped before Worker analysis.
 
@@ -59,5 +60,5 @@ This is local build evidence, not a deployed-service, registry-publication, auth
 - MCP Inspector and named AI-client installation checks beyond the automated stdio client test.
 - Cross-browser/mobile QA and Web Worker performance evaluation for tokenization.
 - Test-derived production limits and Cloudflare authentication/rate controls.
-- npm package naming/ownership verification and publish configuration.
+- npm account/package ownership verification, installed-tarball client check, and publish configuration.
 - `server.json`, registry validation, GitHub Actions OIDC publishing, stable domain, privacy/security URLs, and platform-specific installation verification.
