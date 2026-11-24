@@ -15,6 +15,7 @@ This document records the owner-approved changes made after comparing PARE with 
 - **Two tools:** `analyze_context` and `compare_content`. Recommendations are part of `analyze_context`; the former `suggest_optimizations` surface duplicated that behavior. `compare_content` replaces the earlier `compare_tokens` name and requires explicit original and candidate strings.
 - **Tokenization:** one bundled `o200k_base` implementation through `gpt-tokenizer`. Counts describe that encoding only; provider billing and message framing can differ.
 - **Cleanup:** only exact duplicate standalone prose paragraphs can produce an opt-in, review-required draft. Code, JSON, logs, Markdown structure, MCP schemas, and unique content are never automatically rewritten in v1.
+- **Task guidance:** optional task keywords tailor log and JSON recommendations; they never authorize deletion. Duplicate prose findings require the same plain-text eligibility check as safe drafts.
 - **Storage:** no application database, accounts, saved history, or third-party AI API.
 
 ## Current source layout

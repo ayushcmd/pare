@@ -1,14 +1,19 @@
+import { isDraftEligibleDocument } from "./classify";
 import { CORE_LIMITS } from "./config";
 import type { Finding, SourceKind } from "./contracts";
 import { findParagraphs } from "./paragraphs";
+import { jsonRecommendation, logRecommendation } from "./task-guidance";
 
 export function detectFindings(
   text: string,
   sourceKind: SourceKind,
   tokens: number,
+  task?: string,
 ): Finding[] {
   const findings: Finding[] = [];
-  const paragraphs = findParagraphs(text).slice(0, CORE_LIMITS.maxParagraphs);
+  const paragraphs = isDraftEligibleDocument(text, sourceKind)
+    ? findParagraphs(text).slice(0, CORE_LIMITS.maxParagraphs)
+    : [];
   const firstByText = new Map<string, (typeof paragraphs)[number]>();
 
   for (const paragraph of paragraphs) {
@@ -60,8 +65,7 @@ export function detectFindings(
         code: "verbose_log",
         title: "Long log output",
         message: `The supplied log contains ${lineCount.toLocaleString()} lines.`,
-        recommendation:
-          "Keep failures, stack traces, and nearby context; filter routine success output upstream.",
+        recommendation: logRecommendation(task),
         confidence: "high",
         risk: "high",
         evidence: [{ startLine: 0, endLine: lineCount - 1 }],
@@ -69,7 +73,7 @@ export function detectFindings(
     }
   }
 
-  if (sourceKind === "json") detectJson(text, findings);
+  if (sourceKind === "json") detectJson(text, findings, task);
   if (
     sourceKind === "mcp_tool_schema" &&
     text.length >= CORE_LIMITS.verboseToolDescriptionCharacters
@@ -95,7 +99,7 @@ export function detectFindings(
   return findings.slice(0, CORE_LIMITS.maxFindings);
 }
 
-function detectJson(text: string, findings: Finding[]): void {
+function detectJson(text: string, findings: Finding[], task?: string): void {
   try {
     const value: unknown = JSON.parse(text);
     const hasLargeArray = findLargeArray(value);
@@ -104,8 +108,7 @@ function detectJson(text: string, findings: Finding[]): void {
       code: "verbose_json",
       title: "Large JSON collection",
       message: "The supplied JSON contains a large array.",
-      recommendation:
-        "Select required fields or paginate upstream; PARE will not remove JSON values automatically.",
+      recommendation: jsonRecommendation(task),
       confidence: "high",
       risk: "high",
       evidence: [

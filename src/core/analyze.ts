@@ -10,7 +10,12 @@ export function analyzeContext(rawInput: AnalyzeInput): AnalysisResult {
   assertWithinCoreLimits(input.text, input.task);
 
   const originalTokens = countTextTokens(input.text);
-  const findings = detectFindings(input.text, input.sourceKind, originalTokens);
+  const findings = detectFindings(
+    input.text,
+    input.sourceKind,
+    originalTokens,
+    input.task,
+  );
   const base = {
     schemaVersion: "1.0" as const,
     tokenization: TOKENIZATION,
