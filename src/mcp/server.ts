@@ -10,7 +10,7 @@ import {
 
 export function createPareMcpServer(): McpServer {
   const server = new McpServer(
-    { name: "pare", version: "0.1.0" },
+    { name: "pare", version: "1.0.0" },
     { capabilities: { tools: {} } },
   );
 

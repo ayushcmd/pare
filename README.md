@@ -41,7 +41,7 @@ For a stdio MCP client, launch the published package with npm:
   "mcpServers": {
     "pare": {
       "command": "npx",
-      "args": ["-y", "pare-mcp@0.1.0"]
+      "args": ["-y", "pare-mcp@1.0.0"]
     }
   }
 }
@@ -72,7 +72,7 @@ MCP clients use different configuration shapes; adapt the `command` and `args` f
 
 The optional `task` field changes guidance for recognized diagnostic, success/performance, JSON aggregate, and lookup tasks. It uses simple keyword rules; it does not determine what information is safe to delete. Repeated prose findings are restricted to plain text that passes the conservative prose classifier.
 
-The [public npm package](https://www.npmjs.com/package/pare-mcp) can be launched locally with `npx -y pare-mcp@0.1.0` in an MCP client that supports stdio. The tarball contains the CLI bundle, README, package metadata, `NOTICE`, and the root Apache-2.0 license. `npm run test:package` installs a local tarball into a temporary directory and calls both MCP tools through the installed CLI.
+The [public npm package](https://www.npmjs.com/package/pare-mcp) can be launched locally with `npx -y pare-mcp@1.0.0` in an MCP client that supports stdio. The tarball contains the CLI bundle, README, package metadata, `NOTICE`, and the root Apache-2.0 license. `npm run test:package` installs a local tarball into a temporary directory and calls both MCP tools through the installed CLI.
 
 Codex CLI `0.171.0-alpha.13` was tested with a local PARE tool call on Windows. See [client validation](https://github.com/ayushcmd/pare/blob/main/docs/client-validation.md) for the exact scope and setup command.
 
@@ -84,4 +84,4 @@ PARE detects structural patterns. A smaller input is not guaranteed to preserve 
 
 ## Status
 
-Initial implementation. Local stdio protocol calls are tested, and CI checks every PR. `pare-mcp@0.1.0` is published on npm, and `io.github.ayushcmd/pare@0.1.0` is active in the [official MCP Registry](https://registry.modelcontextprotocol.io/v0.1/servers/io.github.ayushcmd%2Fpare/versions/0.1.0). Production authentication, measured Worker limits, public deployment, GitHub catalog discovery, and OpenAI directory review remain release work.
+The local stdio package is versioned for a `1.0.0` release. The currently published `0.1.0` package remains available on npm and in the [official MCP Registry](https://registry.modelcontextprotocol.io/v0.1/servers/io.github.ayushcmd%2Fpare/versions/0.1.0) until `1.0.0` is published. Production authentication, measured Worker limits, public deployment, GitHub catalog discovery, and OpenAI directory review remain separate work.
